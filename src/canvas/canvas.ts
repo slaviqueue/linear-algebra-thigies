@@ -40,9 +40,8 @@ export class Canvas {
     this._context.fillRect(0, 0, this._width, this._height)
   }
 
-  public drawPoint (vector: Vector) {
-    const rectSize = 8
+  public drawPoint (vector: Vector, size: number = 8) {
     this._context.fillStyle = this._color
-    this._context.fillRect(vector.x - rectSize / 2, vector.y - rectSize / 2, rectSize, rectSize)
+    this._context.fillRect(vector.x - size / 2, vector.y - size / 2, size, size)
   }
 }
