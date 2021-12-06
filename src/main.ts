@@ -1,2 +1,2 @@
 import './style.css'
-import './scenes/floating-boxes'
+import './scenes/rotating-vector'

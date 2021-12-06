@@ -44,4 +44,12 @@ export class Canvas {
     this._context.fillStyle = this._color
     this._context.fillRect(vector.x - size / 2, vector.y - size / 2, size, size)
   }
+
+  public drawVector (origin: Vector, dest: Vector) {
+    this._context.strokeStyle = this._color
+    this._context.beginPath()
+    this._context.moveTo(origin.x, origin.y)
+    this._context.lineTo(origin.x + dest.x, origin.x + dest.y)
+    this._context.stroke()
+  }
 }

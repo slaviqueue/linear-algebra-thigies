@@ -32,4 +32,20 @@ export class Vector {
   public limit (max: number) {
     return new Vector(Math.min(this.x, max), Math.min(this.y, max))
   }
+
+  public normalize () {
+    const mag = this.mag()
+    return new Vector(this.x / mag, this.y / mag)
+  }
+
+  public setMag (mag: number) {
+    return this.normalize().scale(mag)
+  }
+
+  public rotate (radians: number) {
+    return new Vector(
+      this.x * Math.cos(radians) - this.y * Math.sin(radians),
+      this.x * Math.sin(radians) + this.y * Math.cos(radians)
+    )
+  }
 }
