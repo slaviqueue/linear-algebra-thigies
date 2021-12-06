@@ -20,6 +20,8 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': ['error'],
     'prefer-const': ['off'],
     indent: 'off',
-    '@typescript-eslint/indent': ['error', 2]
+    '@typescript-eslint/indent': ['error', 2],
+    'no-unused-vars': ['off'],
+    '@typescript-eslint/no-unused-vars': ['error']
   }
 }

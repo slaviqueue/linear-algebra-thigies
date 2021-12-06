@@ -1,5 +1,17 @@
+import { Canvas } from '../canvas/canvas'
+import { Object } from './object'
+
 export class Loop {
-  public constructor (private readonly fn: () => void) {}
+  private _objects: Object[] = []
+  private _canvas: Canvas
+
+  public constructor (canvas: Canvas) {
+    this._canvas = canvas
+  }
+
+  public addObject (object: Object) {
+    this._objects.push(object)
+  }
 
   public start () {
     this.tick()
@@ -7,6 +19,11 @@ export class Loop {
 
   private tick () {
     requestAnimationFrame(() => this.tick())
-    this.fn()
+
+    this._canvas.clear()
+    this._objects.forEach((obj) => {
+      obj.update()
+      obj.draw(this._canvas)
+    })
   }
 }
