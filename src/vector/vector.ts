@@ -13,6 +13,10 @@ export class Vector {
     return new Vector(vector.x + this.x, vector.y + this.y)
   }
 
+  public minus (vector: Vector) {
+    return new Vector(this.x - vector.x, this.y - vector.y)
+  }
+
   public mul (vector: Vector) {
     return new Vector(vector.x * this.x, vector.y * this.y)
   }
@@ -33,6 +37,13 @@ export class Vector {
     return new Vector(Math.min(this.x, max), Math.min(this.y, max))
   }
 
+  public limitAbs (max: number) {
+    return new Vector(
+      Math.sign(this.x) * Math.min(Math.abs(this.x), max),
+      Math.sign(this.y) * Math.min(Math.abs(this.y), max)
+    )
+  }
+
   public normalize () {
     const mag = this.mag()
     return new Vector(this.x / mag, this.y / mag)
@@ -47,5 +58,9 @@ export class Vector {
       this.x * Math.cos(radians) - this.y * Math.sin(radians),
       this.x * Math.sin(radians) + this.y * Math.cos(radians)
     )
+  }
+
+  public rotation () {
+    return Math.atan2(this.x, this.y)
   }
 }

@@ -1,4 +1,5 @@
 import { Canvas } from '../canvas/canvas'
+import { InputController } from './input-controller'
 import { Object } from './object'
 
 export class Loop {
@@ -7,6 +8,7 @@ export class Loop {
 
   public constructor (canvas: Canvas) {
     this._canvas = canvas
+    window.inputController = new InputController()
   }
 
   public addObject (object: Object) {

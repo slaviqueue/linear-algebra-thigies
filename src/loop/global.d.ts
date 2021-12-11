@@ -1,7 +1,7 @@
-import { Object } from './object'
+import { InputController } from './input-controller'
 
 declare global {
   interface Window {
-    __objects: Object[]
+    inputController: InputController
   }
 }
