@@ -2,7 +2,7 @@
 
 import { Canvas } from '../canvas/canvas'
 
-export class Object {
+export class GameObject {
   public update () {}
   public draw (context: Canvas) {}
 }

@@ -1,9 +1,9 @@
 import { Canvas } from '../../canvas/canvas'
-import { Object } from '../../loop/object'
+import { GameObject } from '../../loop/game-object'
 import { radians } from '../../utils/radians'
 import { Vector } from '../../vector/vector'
 
-export class Ship extends Object {
+export class Ship extends GameObject {
   private _position: Vector = new Vector(0, 0)
   private _direction: Vector = new Vector(0, 1)
   private _velocity: Vector = new Vector(0, 0)

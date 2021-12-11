@@ -1,12 +1,12 @@
 import { Canvas } from '../../canvas/canvas'
 import { Loop } from '../../loop/loop'
-import { Object } from '../../loop/object'
+import { GameObject } from '../../loop/game-object'
 import { Vector } from '../../vector/vector'
 
 const width = 500
 const height = 500
 
-class RotatingVector extends Object {
+class RotatingVector extends GameObject {
   private readonly _origin = new Vector(width / 2, height / 2)
   private _vec = new Vector(100, 100)
 

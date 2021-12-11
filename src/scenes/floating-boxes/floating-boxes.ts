@@ -1,10 +1,10 @@
 import { random } from 'lodash'
 import { Canvas } from '../../canvas/canvas'
 import { Loop } from '../../loop/loop'
-import { Object } from '../../loop/object'
+import { GameObject } from '../../loop/game-object'
 import { Vector } from '../../vector/vector'
 
-class FloatingBox extends Object {
+class FloatingBox extends GameObject {
   private _pos: Vector = this.randomPosition()
   private readonly _velocity: Vector = this.randomVelocity()
 

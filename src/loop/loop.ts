@@ -1,9 +1,9 @@
 import { Canvas } from '../canvas/canvas'
 import { InputController } from './input-controller'
-import { Object } from './object'
+import { GameObject } from './game-object'
 
 export class Loop {
-  private _objects: Object[] = []
+  private _objects: GameObject[] = []
   private _canvas: Canvas
 
   public static make (canvas: Canvas) {
@@ -18,7 +18,7 @@ export class Loop {
     this._canvas = canvas
   }
 
-  public addObject (object: Object) {
+  public addObject (object: GameObject) {
     this._objects.push(object)
   }
 

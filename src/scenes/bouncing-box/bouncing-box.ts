@@ -1,13 +1,13 @@
 import { Canvas } from '../../canvas/canvas'
 import { Loop } from '../../loop/loop'
-import { Object } from '../../loop/object'
+import { GameObject } from '../../loop/game-object'
 import { Vector } from '../../vector/vector'
 
 const width = 500
 const height = 500
 const canvas = new Canvas('#canvas', { width, height })
 
-class BouncingBox extends Object {
+class BouncingBox extends GameObject {
   private _velocity = new Vector(0.01, 0.01)
   private _position = new Vector(0, 0)
   private _acceleration = new Vector(0.01, 0.1)
