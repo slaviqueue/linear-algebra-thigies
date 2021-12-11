@@ -35,6 +35,14 @@ export class Canvas {
     this._canvas.height = this._height
   }
 
+  public get height () {
+    return this._height
+  }
+
+  public get width () {
+    return this._width
+  }
+
   public clear () {
     this._context.fillStyle = this._background
     this._context.fillRect(0, 0, this._width, this._height)

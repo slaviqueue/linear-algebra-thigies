@@ -6,9 +6,16 @@ export class Loop {
   private _objects: Object[] = []
   private _canvas: Canvas
 
-  public constructor (canvas: Canvas) {
-    this._canvas = canvas
+  public static make (canvas: Canvas) {
     window.inputController = new InputController()
+    window.canvasWidth = canvas.width
+    window.canvasHeight = canvas.height
+
+    return new Loop(canvas)
+  }
+
+  private constructor (canvas: Canvas) {
+    this._canvas = canvas
   }
 
   public addObject (object: Object) {

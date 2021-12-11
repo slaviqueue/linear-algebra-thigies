@@ -31,6 +31,6 @@ class BouncingBox extends Object {
 }
 
 const box = new BouncingBox()
-const loop = new Loop(canvas)
+const loop = Loop.make(canvas)
 loop.addObject(box)
 loop.start()

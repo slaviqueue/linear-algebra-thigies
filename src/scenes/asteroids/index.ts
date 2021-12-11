@@ -6,7 +6,7 @@ import { Ship } from './ship'
 const width = 500
 const height = 500
 const canvas = new Canvas('#canvas', { width, height })
-const loop = new Loop(canvas)
+const loop = Loop.make(canvas)
 loop.start()
 
 loop.addObject(new Ship(new Vector(width / 2, height / 2)))

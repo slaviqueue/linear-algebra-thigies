@@ -20,7 +20,7 @@ class RotatingVector extends Object {
 }
 
 const canvas = new Canvas('#canvas', { width, height })
-const loop = new Loop(canvas)
+const loop = Loop.make(canvas)
 loop.start()
 
 loop.addObject(new RotatingVector())

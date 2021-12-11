@@ -30,6 +30,6 @@ const height = 500
 const canvas = new Canvas('#canvas', { width, height })
 const amountOfBoxes = 100
 const boxes = Array(amountOfBoxes).fill(null).map(() => new FloatingBox())
-const loop = new Loop(canvas)
+const loop = Loop.make(canvas)
 loop.start()
 boxes.forEach((box) => loop.addObject(box))
