@@ -10,5 +10,5 @@ const canvas = new Canvas('#canvas', { width, height })
 const loop = Loop.make(canvas)
 loop.start()
 
-loop.addObject(new Ship(new Vector(width / 2, height / 2)))
-Array(10).fill(null).forEach(() => loop.addObject(new Rock()))
+window.world.instantiate(new Ship(new Vector(width / 2, height / 2)))
+Array(10).fill(null).forEach(() => window.world.instantiate(new Rock()))

@@ -32,5 +32,5 @@ class BouncingBox extends GameObject {
 
 const box = new BouncingBox()
 const loop = Loop.make(canvas)
-loop.addObject(box)
+window.world.instantiate(box)
 loop.start()

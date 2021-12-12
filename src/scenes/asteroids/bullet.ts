@@ -3,10 +3,15 @@ import { GameObject } from '../../loop/game-object'
 import { Vector } from '../../vector/vector'
 
 export class Bullet extends GameObject {
+  public static size = 5
   private static _velocity: number = 2
 
   public constructor (private _position: Vector, private readonly _direction: Vector) {
     super()
+  }
+
+  public get position () {
+    return this._position
   }
 
   public update () {
@@ -14,6 +19,6 @@ export class Bullet extends GameObject {
   }
 
   public draw (canvas: Canvas) {
-    canvas.drawVector(this._position, this._direction.scale(5))
+    canvas.drawVector(this._position, this._direction.scale(Bullet.size))
   }
 }

@@ -1,40 +1,30 @@
 import { Vector } from '../../vector/vector'
+import { CanvasEntityBoundaries } from './canvas-entity-boundaries'
 
 export interface IGetSetPosition {
   setPosition (pos: Vector): void
   getPosition (): Vector
 }
 
-type TBoundaries = {
-  top: number
-  right: number
-  bottom: number
-  left: number
-}
-
 export class CanvasBoundaryConstraint {
-  private _boundaries: TBoundaries
+  private _boundaries: CanvasEntityBoundaries
 
-  public constructor (private readonly entity: IGetSetPosition, private readonly rectSize: number) {
-    this._boundaries = {
-      top: -this.rectSize,
-      right: window.canvasWidth + this.rectSize,
-      bottom: window.canvasHeight + this.rectSize,
-      left: -this.rectSize
-    }
+  public constructor (private readonly entity: IGetSetPosition, rectSize: number) {
+    this._boundaries = new CanvasEntityBoundaries(rectSize)
   }
 
   public constrain () {
     const pos = this.entity.getPosition()
+    const boundaries = this._boundaries
 
-    if (pos.y > this._boundaries.bottom) {
-      this.entity.setPosition(new Vector(pos.x, this._boundaries.top))
-    } else if (pos.y < this._boundaries.top) {
-      this.entity.setPosition(new Vector(pos.x, this._boundaries.bottom))
-    } else if (pos.x > this._boundaries.right) {
-      this.entity.setPosition(new Vector(this._boundaries.left, pos.y))
-    } else if (pos.x < this._boundaries.left) {
-      this.entity.setPosition(new Vector(this._boundaries.right, pos.y))
+    if (pos.y > boundaries.bottom) {
+      this.entity.setPosition(new Vector(pos.x, boundaries.top))
+    } else if (pos.y < boundaries.top) {
+      this.entity.setPosition(new Vector(pos.x, boundaries.bottom))
+    } else if (pos.x > boundaries.right) {
+      this.entity.setPosition(new Vector(boundaries.left, pos.y))
+    } else if (pos.x < boundaries.left) {
+      this.entity.setPosition(new Vector(boundaries.right, pos.y))
     }
   }
 }

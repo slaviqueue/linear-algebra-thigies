@@ -32,4 +32,4 @@ const amountOfBoxes = 100
 const boxes = Array(amountOfBoxes).fill(null).map(() => new FloatingBox())
 const loop = Loop.make(canvas)
 loop.start()
-boxes.forEach((box) => loop.addObject(box))
+boxes.forEach((box) => window.world.instantiate(box))

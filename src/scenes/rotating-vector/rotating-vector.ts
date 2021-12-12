@@ -23,4 +23,4 @@ const canvas = new Canvas('#canvas', { width, height })
 const loop = Loop.make(canvas)
 loop.start()
 
-loop.addObject(new RotatingVector())
+window.world.instantiate(new RotatingVector())

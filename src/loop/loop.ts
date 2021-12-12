@@ -1,11 +1,11 @@
 import { Canvas } from '../canvas/canvas'
 import { InputController } from './input-controller'
-import { GameObject } from './game-object'
+import { World } from './world'
 
 export class Loop {
-  private _objects: GameObject[] = []
-  private _canvas: Canvas
   private _started: boolean = false
+  private readonly _canvas: Canvas
+  private readonly _world: World = new World()
 
   public static make (canvas: Canvas) {
     const loop = new Loop(canvas)
@@ -13,7 +13,7 @@ export class Loop {
     window.inputController = new InputController()
     window.canvasWidth = canvas.width
     window.canvasHeight = canvas.height
-    window.loop = loop
+    window.world = loop._world
 
     return loop
   }
@@ -22,8 +22,8 @@ export class Loop {
     this._canvas = canvas
   }
 
-  public addObject (object: GameObject) {
-    this._objects.push(object)
+  public get world () {
+    return this._world
   }
 
   public start () {
@@ -39,7 +39,7 @@ export class Loop {
     requestAnimationFrame(() => this.tick())
 
     this._canvas.clear()
-    this._objects.forEach((obj) => {
+    this._world.gameObjects.forEach((obj) => {
       obj.update()
       obj.draw(this._canvas)
     })

@@ -4,6 +4,7 @@ import { GameObject } from '../../loop/game-object'
 import { radians } from '../../utils/radians'
 import { Vector } from '../../vector/vector'
 import { Bullet } from './bullet'
+import { CanvasEntityBoundaries } from './canvas-entity-boundaries'
 import { CanvasBoundaryConstraint, IGetSetPosition } from './canvas-boundary-constraint'
 
 export class Ship extends GameObject implements IGetSetPosition {
@@ -15,6 +16,8 @@ export class Ship extends GameObject implements IGetSetPosition {
   private readonly _shipRectSize = 10
   private readonly _boundaryConstraint = new CanvasBoundaryConstraint(this, this._shipRectSize)
   private readonly _throttleShoot = throttle(() => this._shoot(), 500, { trailing: false })
+  private readonly _shotBullets: Set<Bullet> = new Set()
+  private readonly _bulletsBoundary = new CanvasEntityBoundaries(Bullet.size)
 
   public constructor (position: Vector) {
     super()
@@ -24,6 +27,7 @@ export class Ship extends GameObject implements IGetSetPosition {
   public update () {
     this._handleInput()
     this._boundaryConstraint.constrain()
+    this._clearDistantBullets()
 
     this._velocity = this._velocity.plus(this._acceleration).limitAbs(1)
     this._position = this._position.plus(this._velocity)
@@ -62,6 +66,17 @@ export class Ship extends GameObject implements IGetSetPosition {
   }
 
   private _shoot () {
-    window.loop.addObject(new Bullet(this._position, this._direction))
+    const bullet = new Bullet(this._position, this._direction)
+    window.world.instantiate(bullet)
+    this._shotBullets.add(bullet)
+  }
+
+  private _clearDistantBullets () {
+    for (const bullet of this._shotBullets) {
+      if (!this._bulletsBoundary.includes(bullet.position)) {
+        window.world.remove(bullet)
+        this._shotBullets.delete(bullet)
+      }
+    }
   }
 }
