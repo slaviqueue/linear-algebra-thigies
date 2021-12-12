@@ -1,5 +1,11 @@
+import { random } from 'lodash'
+
 export class Vector {
   public constructor (private readonly _x: number, private readonly _y: number) {}
+
+  public static random (min: number, max: number) {
+    return new Vector(random(min, max, true), random(min, max, true))
+  }
 
   public get x () {
     return this._x

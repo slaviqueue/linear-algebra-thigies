@@ -5,13 +5,17 @@ import { GameObject } from './game-object'
 export class Loop {
   private _objects: GameObject[] = []
   private _canvas: Canvas
+  private _started: boolean = false
 
   public static make (canvas: Canvas) {
+    const loop = new Loop(canvas)
+
     window.inputController = new InputController()
     window.canvasWidth = canvas.width
     window.canvasHeight = canvas.height
+    window.loop = loop
 
-    return new Loop(canvas)
+    return loop
   }
 
   private constructor (canvas: Canvas) {
@@ -23,7 +27,12 @@ export class Loop {
   }
 
   public start () {
+    if (this._started) {
+      throw new Error('Loop already started')
+    }
+
     this.tick()
+    this._started = true
   }
 
   private tick () {
