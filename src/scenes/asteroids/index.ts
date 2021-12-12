@@ -11,4 +11,4 @@ const loop = Loop.make(canvas)
 loop.start()
 
 loop.addObject(new Ship(new Vector(width / 2, height / 2)))
-loop.addObject(new Rock())
+Array(10).fill(null).forEach(() => loop.addObject(new Rock()))

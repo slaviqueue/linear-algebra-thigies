@@ -5,9 +5,9 @@ import { Vector } from '../../vector/vector'
 import { CanvasBoundaryConstraint, IGetSetPosition } from './canvas-boundary-constraint'
 
 export class Rock extends GameObject implements IGetSetPosition {
-  private _position = new Vector(100, 100)
+  private _position = new Vector(random(window.canvasWidth), random(window.canvasHeight))
   private _velocity = Vector.random(-0.5, 0.5)
-  private _size = random(5, 20)
+  private _size = random(5, 30)
   private _shape: Vector[] = this._makeShape()
   private _boundaryConstraint = new CanvasBoundaryConstraint(this, this._size)
 
@@ -29,7 +29,7 @@ export class Rock extends GameObject implements IGetSetPosition {
   }
 
   private _makeShape () {
-    const amountOfPoints = random(4, 10)
+    const amountOfPoints = random(5, 7)
     const angularOffset = 2 * Math.PI / amountOfPoints
     const points = Array(amountOfPoints).fill(null).map((_, i) => {
       const point = new Vector(Math.sin(angularOffset * i), Math.cos(angularOffset * i))

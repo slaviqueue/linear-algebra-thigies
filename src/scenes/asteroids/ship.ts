@@ -11,10 +11,10 @@ export class Ship extends GameObject implements IGetSetPosition {
   private _direction: Vector = new Vector(0, 1)
   private _velocity: Vector = new Vector(0, 0)
   private _acceleration: Vector = new Vector(0, 0)
-  private readonly friction: number = 0.99
+  private readonly friction: number = 0.995
   private readonly _shipRectSize = 10
   private readonly _boundaryConstraint = new CanvasBoundaryConstraint(this, this._shipRectSize)
-  private readonly _throttleShoot = throttle(() => this._shoot(), 500)
+  private readonly _throttleShoot = throttle(() => this._shoot(), 500, { trailing: false })
 
   public constructor (position: Vector) {
     super()
