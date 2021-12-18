@@ -1,14 +1,15 @@
 import { random } from 'lodash'
 import { Canvas } from '../../canvas/canvas'
 import { GameObject } from '../../loop/game-object'
-import { Vector } from '../../vector/vector'
+import { Shape } from '../../primitives/shape'
+import { Vector } from '../../primitives/vector'
 import { CanvasBoundaryConstraint, IGetSetPosition } from './canvas-boundary-constraint'
 
 export class Rock extends GameObject implements IGetSetPosition {
   private _position = new Vector(random(window.canvasWidth), random(window.canvasHeight))
   private _velocity = Vector.random(-0.5, 0.5)
   private _size = random(5, 30)
-  private _shape: Vector[] = this._makeShape()
+  private _shape: Shape = this._makeShape()
   private _boundaryConstraint = new CanvasBoundaryConstraint(this, this._size)
 
   public update () {
@@ -17,7 +18,7 @@ export class Rock extends GameObject implements IGetSetPosition {
   }
 
   public draw (canvas: Canvas) {
-    canvas.drawPoly(this._position, this._shape)
+    canvas.drawShape(this._position, this._shape)
   }
 
   public getPosition () {
@@ -35,6 +36,8 @@ export class Rock extends GameObject implements IGetSetPosition {
       const point = new Vector(Math.sin(angularOffset * i), Math.cos(angularOffset * i))
       return point.scale(this._size + random(1, 10))
     })
-    return points
+
+    const shape = new Shape(points)
+    return shape
   }
 }

@@ -1,4 +1,4 @@
-import { Vector } from '../../vector/vector'
+import { Vector } from '../../primitives/vector'
 import { CanvasEntityBoundaries } from './canvas-entity-boundaries'
 
 export interface IGetSetPosition {

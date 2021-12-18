@@ -1,5 +1,6 @@
 import { first } from 'lodash'
-import { Vector } from '../vector/vector'
+import { Shape } from '../primitives/shape'
+import { Vector } from '../primitives/vector'
 
 type CanvasOptions = {
   width?: number
@@ -70,14 +71,14 @@ export class Canvas {
     this._context.stroke()
   }
 
-  public drawPoly (pos: Vector, poly: Vector[]) {
+  public drawShape (pos: Vector, shape: Shape) {
     this._context.strokeStyle = this._color
     this._context.beginPath()
 
-    const firstPoint = first(poly)!.plus(pos)
+    const firstPoint = first(shape.points)!.plus(pos)
     this._context.moveTo(firstPoint.x, firstPoint.y)
 
-    for (const point of poly) {
+    for (const point of shape.points) {
       const positioned = point.plus(pos)
       this._context.lineTo(positioned.x, positioned.y)
     }
