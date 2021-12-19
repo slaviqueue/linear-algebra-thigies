@@ -1,6 +1,6 @@
-import { Canvas } from '../../canvas/canvas'
-import { Loop } from '../../loop/loop'
-import { Vector } from '../../primitives/vector'
+import { Canvas } from '../../engine/canvas/canvas'
+import { Loop } from '../../engine/loop/loop'
+import { Vector } from '../../engine/primitives/vector'
 import { Rock } from './rock'
 import { Ship } from './ship'
 

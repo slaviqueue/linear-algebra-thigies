@@ -69,4 +69,8 @@ export class Vector {
   public rotation () {
     return Math.atan2(this.x, this.y)
   }
+
+  public perpendicular () {
+    return new Vector(-this.y, this.x)
+  }
 }

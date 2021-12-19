@@ -1,4 +1,4 @@
-import { Vector } from '../../primitives/vector'
+import { Vector } from '../../engine/primitives/vector'
 
 export class CanvasEntityBoundaries {
   private readonly _top: number

@@ -13,7 +13,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "typeRoots": ["./src/loop/global.d.ts"]
+    "typeRoots": ["src/engine/loop/global.d.ts"]
   },
   "include": ["./src"],
 }

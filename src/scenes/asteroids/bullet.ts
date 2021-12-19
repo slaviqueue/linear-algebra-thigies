@@ -1,6 +1,6 @@
-import { Canvas } from '../../canvas/canvas'
-import { GameObject } from '../../loop/game-object'
-import { Vector } from '../../primitives/vector'
+import { Canvas } from '../../engine/canvas/canvas'
+import { GameObject } from '../../engine/loop/game-object'
+import { Vector } from '../../engine/primitives/vector'
 
 export class Bullet extends GameObject {
   public static size = 5

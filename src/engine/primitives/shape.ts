@@ -17,4 +17,6 @@ export class Shape {
 
     return edges
   }
+
+  public collidesWith (shape: Shape) {}
 }

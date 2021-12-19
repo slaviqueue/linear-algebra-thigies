@@ -1,8 +1,8 @@
 import { random } from 'lodash'
-import { Canvas } from '../../canvas/canvas'
-import { GameObject } from '../../loop/game-object'
-import { Shape } from '../../primitives/shape'
-import { Vector } from '../../primitives/vector'
+import { Canvas } from '../../engine/canvas/canvas'
+import { GameObject } from '../../engine/loop/game-object'
+import { Shape } from '../../engine/primitives/shape'
+import { Vector } from '../../engine/primitives/vector'
 import { CanvasBoundaryConstraint, IGetSetPosition } from './canvas-boundary-constraint'
 
 export class Rock extends GameObject implements IGetSetPosition {

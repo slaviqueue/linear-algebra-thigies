@@ -1,8 +1,8 @@
 import { random } from 'lodash'
-import { Canvas } from '../../canvas/canvas'
-import { Loop } from '../../loop/loop'
-import { GameObject } from '../../loop/game-object'
-import { Vector } from '../../primitives/vector'
+import { Canvas } from '../../engine/canvas/canvas'
+import { Loop } from '../../engine/loop/loop'
+import { GameObject } from '../../engine/loop/game-object'
+import { Vector } from '../../engine/primitives/vector'
 
 class FloatingBox extends GameObject {
   private _pos: Vector = this.randomPosition()
